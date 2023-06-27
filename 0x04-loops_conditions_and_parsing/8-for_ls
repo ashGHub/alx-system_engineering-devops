@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This script is displaying the current directory file content
+fls=$(ls .)
+for s in $fls;do
+echo "${s#[0-9]*-}"
+done
