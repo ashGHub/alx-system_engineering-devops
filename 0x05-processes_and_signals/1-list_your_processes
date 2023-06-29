@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 # This is bash script that displays running processes
-prc_list=$(top -b -n 1 | tail -n +7)
-echo "$prc_list"
+ps -auxf
