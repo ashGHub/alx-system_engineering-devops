@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This is bashscript to that writes infinite message
+i="1"
+while [ $i = "1" ]
+do
+echo "I am alive!" >> /tmp/my_process
+sleep 2
+done 
