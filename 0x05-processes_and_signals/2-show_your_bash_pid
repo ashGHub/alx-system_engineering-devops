@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This is a bashscript that display PID with bash key word
+prc_list=$(top -b -n 1 | tail -n +7 | grep bash)
+echo "$prc_list"
