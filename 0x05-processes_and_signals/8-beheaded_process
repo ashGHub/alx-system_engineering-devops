@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This is bashscript that kills task 4 bash
+script_pid=$(pgrep -f "7-highlander")
+kill -9 "$script_pid"
