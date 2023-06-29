@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This is bashscript that kills task 4 bash
+pkill -f "4-to_infinity_and_beyond"
