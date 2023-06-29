@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# This is bashscript that displays message in infinity
+trap 'echo "I hate the kill command";rm /var/run/myscript.pid;exit 1' SIGTERM SIGQUIT
+trap 'echo "Y U no love me?!"' SIGINT
+script_pid=$$
+echo "$script_pid" > /var/run/myscript.pid
+i="1"
+while [ $i = "1" ]
+do
+echo "To infinity and beyond"
+sleep 2
+done
