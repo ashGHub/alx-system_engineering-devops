@@ -19,9 +19,11 @@ rm "$pid_f" &&
 echo "manage_my_process stopped"
 ;;
 "restart")
-pkill -f ./"manage_my_process" &&
-./manage_my_process &
-echo "$script_pid" > "$pid_f" &&
+"$0" stop >& /dev/null &&
+"$0" start >& /dev/null &&
 echo "manage_my_process restarted"
+;;
+*)
+echo "Usage: manage_my_process {start|stop|restart}"
 ;;
 esac
