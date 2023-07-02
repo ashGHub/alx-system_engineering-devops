@@ -13,7 +13,9 @@ echo "$script_pid" > "$pid_f" &&
 echo "manage_my_process started"
 ;;
 "stop")
+[ -e $pid_f ] &&
 pkill -f "./manage_my_process" &&
+rm "$pid_f" &&
 echo "manage_my_process stopped"
 ;;
 "restart")
