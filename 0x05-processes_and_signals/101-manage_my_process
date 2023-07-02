@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # This is bash script that handle a process as a service
+pid_f=/var/run/my_process.pid
 if [ "$#" -eq 0 ]; then
 echo "Usage: manage_my_process {start|stop|restart}"
 exit 1
@@ -8,15 +9,17 @@ script_pid=$$
 case $1 in
 "start")
 ./manage_my_process &
-echo "$script_pid" > /var/run/my_process.pid
+echo "$script_pid" > "$pid_f" &&
 echo "manage_my_process started"
 ;;
 "stop")
-pkill -f "./manage_my_process" && rm /var/run/my_process.pid && echo "manage_my_process stopped"
+pkill -f "./manage_my_process" &&
+echo "manage_my_process stopped"
 ;;
 "restart")
-pkill -f ./"manage_my_process" && rm /var/run/my_process.pid && ./manage_my_process &
-echo "$script_pid" > /var/run/my_process.pid
+pkill -f ./"manage_my_process" &&
+./manage_my_process &
+echo "$script_pid" > "$pid_f" &&
 echo "manage_my_process restarted"
 ;;
 esac
