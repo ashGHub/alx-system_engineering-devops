@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This is a bashscript that resolves hostname to custom ip
+hosts_file="/etc/hosts"
+echo "127.0.0.2 localhost" >> "$hosts_file" && echo "8.8.8.8 facebook.com" >> "$hosts_file"
