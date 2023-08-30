@@ -12,8 +12,7 @@ file {'/var/www/html/index.nginx-debian.html':
 file_line {'configure redirection':
     path  =>  '/etc/nginx/sites-available/default',
     after =>  'server_name _;',
-    line  =>  53,
-    content => "location /redirect_me { return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4; }"
+    line  =>  "location /redirect_me { return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4; }"
 }
 
 service {'nginx':
