@@ -1,0 +1,24 @@
+#!/bin/bash
+# This script is used to install the dependencies for the project
+sudo apt-get update
+sudo apt-get -y install nginx
+echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
+
+# Add redirection configuration
+REDIRECT_CONFIG='location /redirect_me { return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4; }'
+# Insert it at line 53
+sudo sed -i "53i $REDIRECT_CONFIG" /etc/nginx/sites-available/default
+
+# 404 page configuration
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+NOT_FOUND_CONFIG='error_page 404 /404.html;'
+# Insert it at line 54
+sudo sed -i "54i $NOT_FOUND_CONFIG" /etc/nginx/sites-available/default
+
+# Add header configuration
+# Hostname is the name of the server and is environment variable
+HEADER_CONFIG='add_header X-Served-By $HOSTNAME;'
+# Insert it at line 55
+sudo sed -i "55i $HEADER_CONFIG" /etc/nginx/sites-available/default
+
+sudo service nginx restart
