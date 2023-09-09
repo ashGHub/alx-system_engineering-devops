@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# This script install and configure HAproxy on the load balancer
+
+# Install HAproxy
+sudo apt-get update
+sudo apt-get -y install haproxy
+
+LOAD_BALANCER_CONFIG="
+frontend http80
+    bind *:80
+    timeout client 1m
+    mode http
+    default_backend hbnb
+
+backend hbnb
+    timeout connect 10s
+    timeout server 100s
+    mode http
+    balance roundrobin
+    server 265120-web-01 3.85.54.213
+    server 265120-web-02 54.90.35.144
+"
+echo "$LOAD_BALANCER_CONFIG" | sudo tee /etc/haproxy/haproxy.cfg
+
+# Restart HAproxy
+sudo service haproxy restart
