@@ -1,0 +1,15 @@
+frontend http80
+    bind *:80
+    bind *:443 ssl crt /etc/letsencrypt/live/lb-01.ashalx.tech/alx.pem
+    http-request redirect scheme https code 301 unless { ssl_fc }
+    timeout client 1m
+    mode http
+    use_backend hbnb
+
+backend hbnb
+    timeout connect 10s
+    timeout server 100s
+    mode http
+    balance roundrobin
+    server 265120-web-01 3.85.54.213:80 check
+    server 265120-web-02 54.90.35.144:80 check
