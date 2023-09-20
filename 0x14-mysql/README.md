@@ -26,6 +26,12 @@ To know which ubuntu version code name you have run the code `lsb_release -a` <b
 `sudo apt install -f mysql-client=5.7* mysql-community-server=5.7* mysql-server=5.7*`
 
 # Add holberton_user with permission
-CREATE USER 'holberton_user '@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
+CREATE USER 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
 GRANT REPLICATION CLIENT ON *.* TO 'holberton_user'@'localhost';
 
+# Create replica_user with permission
+CREATE USER 'replica_user'@'%' IDENTIFIED BY 'per_replica_web1';
+GRANT REPLICATION SLAVE ON *.* TO 'replica_user'@'%';
+
+# Add select permission
+GRANT SELECT ON mydatabase.mytable TO 'myuser'@'%';
