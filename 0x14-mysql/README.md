@@ -4,8 +4,8 @@ This is a readme file for MySql installation on web server
 
 0. Setup MySQL GPG public key as Signature Checking<br>
 i. `sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 467B942D3A79BD29` <br>
-I added this keyId because it was showing my it could find the keyId
-ii. `sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5072E1F5` <br>
+I added this keyId because it was showing me it could find the keyId
+ii. `sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 3A79BD29` <br>
 For MySql 8.0.28 and higher release package: keyID is <b>3A79BD29</b><br>
 For earlier releases (in our case 5.7) is 5072E1F5
 
@@ -24,3 +24,8 @@ To know which ubuntu version code name you have run the code `lsb_release -a` <b
 `sudo apt-get update`
 4. Install MySql <br>
 `sudo apt install -f mysql-client=5.7* mysql-community-server=5.7* mysql-server=5.7*`
+
+# Add holberton_user with permission
+CREATE USER 'holberton_user '@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
+GRANT REPLICATION CLIENT ON *.* TO 'holberton_user'@'localhost';
+
