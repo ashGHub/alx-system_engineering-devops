@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Backup MySQL's all databases and zip it
+
+ZIP_PATH="$(date +%d-%m-%Y).tar.gz"
+BACK_SQL_PATH='backup.sql'
+
+# Backup all databases
+mysqldump -u root -p"$1" --all-databases > $BACK_SQL_PATH
+
+# Compress the backup
+tar -czvf $ZIP_PATH $BACK_SQL_PATH
