@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
-# This script prints the current user name
-whoami
+# Prints the user name of the passed user else current user
+
+sudo -u "$1" whoami
+    
