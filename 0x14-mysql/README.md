@@ -35,3 +35,6 @@ GRANT REPLICATION SLAVE ON *.* TO 'replica_user'@'%';
 
 # Add select permission
 GRANT SELECT ON mydatabase.mytable TO 'myuser'@'%';
+
+# Allow port 3303 for web 2 from web 1
+`sudo ufw allow from 54.90.35.144 to any port 3306`
