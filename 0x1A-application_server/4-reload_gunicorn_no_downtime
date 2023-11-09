@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-# This script will reload gunicorn without downtime
-
-# Get the process ID of the master gunicorn process and
-# gracefully reloads gunicorn
-kill -HUP "$(pgrep gunicorn | head -n 1)"
